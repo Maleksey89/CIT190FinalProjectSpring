@@ -1,0 +1,58 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Game Page</title>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="css/finalProjectIndex.css">
+  <link href="https://fonts.googleapis.com/css2?family=Nanum+Brush+Script&family=Supermercado+One&display=swap" rel="stylesheet">
+</head>
+<body>   <!--I used the side menu as access to the readme and a future page that can change the css of the game page -->
+      <span id="dropMenu" style="font-size:36px;cursor:pointer;color: white;">&#9776;Menu</span>
+      <nav id="mySideNav" class="sidenav">
+        <a href="readme.html">ReadMe</a>
+        <a href="#">Page Settings</a>
+    </nav>
+    <!--This page is designed for folks who enjoy very simple video games and understand that i am a beginner. -->
+<header> <!--I chose a simple interface without too many colors, the color scheme reminds me of the car designs I used to make in Need For Speed most wanted, one of my favorite games
+  . I may add a similar green color shape for the background later -->
+ <h1>Max's Game Place</h1>
+</header>
+  <main>
+      <article>
+        <div>
+        <section id="jumble">
+          <!--A simple 3 tile set up horizontally in the middle of the page -->
+          <h2>Word Jumble</h2>
+       	   <p><a href="Words.html"><p><img src="media/wordJumble.png" alt="puzzle" height="100px" width="100px"></p><p>Rearrange random letters to create the longest word</p></a></p>
+        </section>
+        <section id="puzzleGame">
+          <h2>Puzzle Game</h2>
+	          <p><a href="#"><p><img src="media/puzzle-pieces-jigsaw-piece-79431.png" alt="puzzle" height="100px" width="100px"></p><p>Recreate a puzzle using the pieces provided</p></a></p>
+        </section>
+        <section id="carGame">          
+          <h2>Car Obstacle Game</h2>
+	          <p><a href="canvasGame.html"><p><img src="media/blackLambo.png" alt="Black Lambo" height="50px" width="150px"></p>Last as long as you can and not hit any obstacles<p></a>
+        </section>
+      </div>
+     </article>
+  </main>
+  <footer>
+  &copy; NMC Maksim Alekseyenko
+  <aside>
+    <h3>Spring 2022 Semester </h3>
+  </aside>
+  </footer>
+  <script src="js/dropMenu.js"></script>
+  <script>
+      document.getElementById("jumble").addEventListener("click", function(){
+			location.assign("Words.html");
+		});
+    document.getElementById("puzzleGame").addEventListener("click", function(){
+			location.assign("#");
+		});
+    document.getElementById("carGame").addEventListener("click", function(){
+			location.assign("canvasGame.html");
+		});
+  </script>
+</body>
+</html>

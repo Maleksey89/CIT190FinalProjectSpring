@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/finalProjectIndex.css">
+   <script src="https://code.jquery.com/jquery-latest.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      /* #MoveMe1, #MoveMe2, #MoveMe3, #MoveMe4, #MoveMe5, #MoveMe6, #MoveMe7, #MoveMe8,#MoveMe9
+      {
+         border: solid;
+         width: 60px;
+         height: 60px;
+         text-align: center;
+         background-color: white;
+         font-size: 3em;
+         float: left;
+         list-style-type: none;
+         
+      } */
+      /* #sortable{
+         list-style-type: none;
+         margin:0;
+         float: left;
+         margin-top:0;
+      }
+      #sortable {
+         float: left;
+         border: solid;
+         width: 60px;
+         height: 60px;
+         text-align: center;
+         background-color: white;
+         float: left;
+         font-size: 3em;
+      }
+      section{
+         max-width: 60%;
+		 display:flex;
+ 		 flex-wrap:wrap;
+        cursor: default;
+        width:fit-content;
+        text-align: center;
+            
+		}
+      section:hover{
+         transform: none;
+      }
+	p{
+		flex:1;
+		width:200px;
+	}
+   */
+   .tile {
+    background-image: url(https://dl.dropboxusercontent.com/s/knhgq8ycjm4i6de/scrabble_tile.png);
+    width: 66px;
+    height: 65px;
+    display: inline-block;
+    font-size: 48px;
+    text-align: center;
+    padding-top: 10px;
+    margin: 5px;
+    cursor: pointer;
+    
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+   </style>
+  
+   <title>Word Scramble</title>
+</head>
+<body>
+<!-- <span id="dropMenu" style="font-size:36px;cursor:pointer;color: white;">&#9776;Menu</span>
+      <nav id="mySideNav" class="sidenav">
+        <a href="readme.html">ReadMe</a>
+        <a href="finalProjectIndex.html">Game Page</a>
+        <a href="#">Page Settings</a>
+    </nav>
+
+   <h1>Word Scramble</h1>
+   <section>
+	   <table>  
+         <tr >      
+           <td id="sortable">W</td>
+           <td id="sortable">O</td>
+           <td id="sortable">R</td>
+           <td id="sortable">D</td>
+           <td id="sortable">G</td>
+           <td id="sortable">A</td>
+           <td id="sortable">M</td>
+           <td id="sortable">E</td>
+           <td id="sortable">S</td>
+         </tr> -->
+         <!-- <tr>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+           <td id="sortable"></td>
+          </tr> -->
+     <!-- </table> -->
+      
+      
+      
+      
+      
+      
+      <!-- <ul>         
+          <li id="MoveMe1">W</li>
+          <li id="MoveMe2">O</li>
+          <li id="MoveMe3">R</li>
+          <li id="MoveMe4">D</li>
+          <li id="MoveMe5">G</li>
+          <li id="MoveMe6">A</li>
+          <li id="MoveMe7">M</li>
+          <li id="MoveMe8">E</li>
+          <li id="MoveMe9">S</li>
+          </ul>
+          <ul id="sortable">          
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>
+         <li></li>     
+   </ul> -->
+   <div>
+      <ol class="word"></ol>
+   </div>
+</body>
+<script>
+var dictionary = [
+  "TIGER",
+  "LION",
+  "BEAR"
+];
+var myWord;
+
+function scramble(word) {
+  return word.split('').sort(function() {
+    return Math.random() - 0.5
+  }).join('');
+}
+
+function chooseWord() {
+  return dictionary[Math.floor(Math.random() * dictionary.length)];
+}
+
+function printWord(word) {
+  var html = "";
+  for (var i = 0; i < word.length; i++) {
+    html += '<li class="tile">' + word[i] + '</li>'
+  }
+  $('.word').html(html);
+}
+
+function startGame() {
+  myWord = chooseWord();
+
+  var scrambled = scramble(myWord);
+
+  while (scrambled == myWord) {
+    scrambled = scramble(myWord);
+  }
+
+  printWord(scramble(myWord));
+}
+
+$(function() {
+  startGame();
+
+  $('.word').sortable({
+    update: function(e, ui) {
+      console.log(myWord, $('.tile').text());
+      if (myWord === $('.tile').text()) {
+        var playAgain = confirm("You win! Play again?");
+        if (playAgain) {
+          startGame();
+        }
+      }
+    }
+  });
+});
+
+
+//    document.getElementById("dropMenu").addEventListener("click", function(){
+//      var x = document.getElementById("mySideNav");
+//         if (x.style.display =="flex") {
+//           x.style.display="none";
+//        } else {
+//           x.style.display="flex";
+//  }
+// });
+//      $(function()
+//        {
+//          $('table').sortable({
+//              items: 'td',     
+// });
+
+      //   $("#MoveMe1").draggable();
+      //   $("#MoveMe2").draggable();
+      //   $("#MoveMe3").draggable();
+      //   $("#MoveMe4").draggable();
+      //   $("#MoveMe5").draggable();
+      //   $("#MoveMe6").draggable();
+      //   $("#MoveMe7").draggable();
+      //   $("#MoveMe8").draggable();
+      //   $("#MoveMe9").draggable();
+     //  });
+  </script>
+</html>

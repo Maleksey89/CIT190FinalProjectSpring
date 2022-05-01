@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/finalProjectIndex.css">
+   <script src="https://code.jquery.com/jquery-latest.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      #scramble, #solved{
+         list-style-type: none;        
+         display: inline-block;
+          padding: 10px;
+         background-color: #f3f3f9; 
+         min-height: 60px;
+         min-width: 610px;
+      }
+      ul > li{
+         float: left;
+         border: solid;
+         width: 60px;
+         height: 60px;
+         text-align: center;
+         float: left;
+         font-size: 3em;
+         background-color: white;
+      }
+      section{
+         max-width: 80%;
+		 
+ 		 flex-wrap:wrap;
+        cursor: default;
+        width: 100%;
+        text-align: center;
+        margin: auto;
+        height: fit-content;
+            
+		}
+      section:hover{
+         transform: none;
+      }
+	p{
+		flex:1;
+		width:200px;
+	}
+   .outputDiv{
+      border: 2px solid red;
+      font-size: 3em;
+      background-color: black;
+      color: white;
+      padding-left: none;   
+      width: 100%; 
+      cursor: pointer;        
+   } 
+   .hidden{
+      display: none;
+   }  
+   </style>
+  
+   <title>Word Scramble</title>
+</head>
+<body>
+<span id="dropMenu" style="font-size:36px;cursor:pointer;color: white;">&#9776;Menu</span>
+      <nav id="mySideNav" class="sidenav">
+        <a href="readme.html">ReadMe</a>
+        <a href="finalProjectIndex.html">Game Page</a>
+      </nav>
+
+   <h1>Word Scramble</h1>
+   <section>
+      <h3>Drag the letters to the white area below them. Try to make the longest word possible
+         <br>Then check to see if it is a real word or not!</br>
+      </h3> 
+      <div class="randomLetters" style="width:auto;">        
+	   <ul id="scramble" class="dropTrue ui-sortable">         
+      </ul>
+   </div>
+   <div class="wordGuess" >   
+       <ul id="solved" class="dropTrue ui-sortable">          
+       </ul>
+   </div>
+   <section class="outputDiv button" style="width: auto;">
+      Click Here to check if the word<br> is a real word!
+   </section>
+   <p>
+   <section class="outputDiv hidden">
+   <div class="output"></div>
+   <div class="define"></div> 
+   </section>
+   </section>
+</body>
+<script src="js/wordGame.js"></script>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Car Canvas Game</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="stylesheet" href="css/finalProjectIndex.css">
+<style>
+canvas {
+    border:1px solid #d3d3d3;
+    background-color: rgb(144, 141, 112);
+    margin-top: 100px;
+}
+section{
+    margin-top: -800px;
+    margin-left: 500px; 
+    height: auto; 
+    max-width:300px;
+    transform: none;
+    cursor: default;
+}
+section:hover{
+    transform: none;
+    cursor: default;
+}
+div{
+    display: block;
+    padding-left: 0px;
+    padding-right: 0px;
+}
+ .sidenav{
+    position:relative;
+   top: 100px;
+} 
+</style>
+</head>
+<header>    
+<h1>Car Driving Game</h1>
+</header>
+<body onload="loadGame()">
+    <section >
+        <button onclick="location.href='finalProjectIndex.html' ">Back to Home</button><br><br>
+        <h2>Car Driving Game</h2>
+        <p>Use the arrow keys on your keyboard or the keys below to move the Unit around to avoid the obstacles</p>
+            <p>Left Key: Moves the unit Left</p>
+            <p>Right Key: Moves the unit Right</p>
+            <p>Up Key: Moves the unit Up</p>
+            <p>Down Key: Moves the unit down</p>
+            <div>
+                  <button onmousedown="moveup()" onmouseup="clearmove()" ontouchstart="moveup()">UP</button><br><br>
+                  <button onmousedown="moveleft()" onmouseup="clearmove()" ontouchstart="moveleft()">LEFT</button>
+                  <button onmousedown="moveright()" onmouseup="clearmove()" ontouchstart="moveright()">RIGHT</button><br><br>
+                  <button onmousedown="movedown()" onmouseup="clearmove()" ontouchstart="movedown()">DOWN</button><br><br>
+                  <button id="reset">Reset Game</button>
+                </div>                               
+    </section>
+    <span style="top: 100px;" id="dropMenu">&#9776;Menu</span> 
+    <nav id="mySideNav" class="sidenav" style="height:auto;">
+    <a href="readme.html">ReadMe</a>
+    <a href="finalProjectIndex.html">Game Page</a>
+ </nav>
+<script src="js/dropMenu.js"></script>
+<script src="js/carGame.js"></script>
+
+
+<p></p>
+</body>
+</html>

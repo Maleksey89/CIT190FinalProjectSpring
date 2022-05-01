@@ -103,6 +103,10 @@ h2 {
     padding:0px;
     font-size: 2em;
 }
+h3{
+    width: 100%;
+    text-align: center;
+}
 article{   
     /* background-size:75%; */
     background-position: center;
@@ -127,7 +131,7 @@ section{
 	background-color:var(--accent-color-green);
 	border:10px rgb(161, 0, 0) ridge;
 	max-width:250px;
-	height:250px;	
+	height: 300px;	
 	margin:25px;
 	padding:5px;
 	text-align:center;

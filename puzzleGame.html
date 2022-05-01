@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Puzzle Game</title>
+    <link rel="stylesheet" href="css/finalProjectIndex.css">
+</head> 
+<body >    
+    <span id="dropMenu">&#9776;Menu</span>
+        <nav id="mySideNav" class="sidenav" style="height:auto;">
+        <a href="readme.html">ReadMe</a>
+        <a href="finalProjectIndex.html">Game Page</a>
+     </nav>
+    <header>
+        <h1>Solve the Puzzle!</h1>
+    </header> <!--Holder for the game canvas-->
+    <div>
+    <canvas class="puzzleGame" id="game"></canvas>
+    </div>   
+    <br/> <!--Buttons to start the game, each returns a value that is used to determined to the size of the individual pieces-->
+        <section class="buttonHolder">        
+            <h2 for="difficulty" >Please select a difficulty to begin</h2>          
+            <div id="selectDifficulty" class="selectDifficulty" style="display:block;">
+            <button type="button" class="difficulty" id="easy" value= 4 >Easy</button>
+            <button type="button" class="difficulty" id="medium" value= 6 >Medium</button>
+            <button type="button" class="difficulty" id="hard" value=8 >Hard</button>
+            <!-- Buttons that show up when the game is running and dont show at the beginning-->
+            </div>
+            <div id="gameRunning" class="gameRunning hidden">
+            <div id="hintWindow"></div> 
+            <button type="button" class="gameActive" id="hint">Show hint</button><!--Show small image to help once the mouse is moved it dissappears-->
+            <button type="button" class="gameActive" id="reset">Reset</button> <!-- starts the game from the beginning-->
+            </div>                       
+        </section>
+            
+        <script src="js/puzzleGame.js"></script>
+        <script src="js/dropMenu.js"></script>        
+</body>
+</html> 

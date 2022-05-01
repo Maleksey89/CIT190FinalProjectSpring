@@ -1,11 +1,12 @@
+// sets the color that the puzzle pieces will have when they are hovered over//
 const PUZZLE_HOVER_TINT = '#ff0707';
  
- 
+ //draws the puzzle source image
 const canvas = document.querySelector("#game");
 const gameArea = canvas.getContext("2d");
 const img = new Image();
 
-var difficulty=10;
+var difficulty=1;
 var pieces;
 var puzzleWidth;
 var puzzleHeight;
@@ -13,21 +14,23 @@ var pieceWidth;
 var pieceHeight;
 var currentPiece;
 var currentDropPiece;
-var MAX_WIDTH= 720;
-var MAX_HEIGHT= 1280;
+// var MAX_WIDTH= 720;
+// var MAX_HEIGHT= 1280;
 var newWidth;
 var newHeight;
-var easy = 3;
-var medium= 5;
-var hard = 8;
+// var easy = 3;
+// var medium= 5;
+// var hard = 8;
 
  
 var mouse;
-
-img.addEventListener('load',onImage,false);
+//loads the image when the page loads
+img.addEventListener('load', onImage, false);
 img.src = "media/supercar_garage.jpg";
 
-function initPuzzle() {
+// declares puzzle and initializes it
+function loadPuzzleImage() 
+{
     pieces = [];
     mouse = {
       x: 0,
@@ -48,26 +51,31 @@ function initPuzzle() {
     );
     buildPieces();
   }
-  
-  function setCanvas() {
+  //sets size of canvas based on image size and draws border around it
+  function setCanvas() 
+  {
     canvas.width = puzzleWidth;
     canvas.height = puzzleHeight;
-    canvas.style.border = "1px solid black";
+    canvas.style.border = "5px solid rgb(85, 252, 7)";
   }
-  
-  function onImage() {   
-    pieceWidth = Math.floor(img.width / difficulty);
-    pieceHeight = Math.floor(img.height / difficulty);
-    puzzleWidth = pieceWidth * difficulty;
-    puzzleHeight = pieceHeight * difficulty;
+  //determines size of image and size of individual pieces that will be rendered in the puzzle
+ function onImage() 
+ {   
+    pieceWidth = Math.floor(puzzleWidth/ difficulty);
+    pieceHeight = Math.floor(puzzleHeight / difficulty);
+    puzzleWidth = Math.floor(img.width);
+    puzzleHeight = Math.floor(img.height);
     setCanvas();
-    initPuzzle();
+    loadPuzzleImage();
   }
-  function buildPieces() {
+  //creates the grid like appearance of the movable pieces that can be arranged to finish the puzzle
+  function buildPieces() 
+  {
     var i;
     var piece;
     var xPos = 0;
     var yPos = 0;
+    // the grid is split into a i x i grid based on the difficulty setting
     for (i = 0; i < difficulty * difficulty; i++) {
       piece = {};
       piece.sx = xPos;
@@ -80,8 +88,9 @@ function initPuzzle() {
       }
     }
   }
-  
-  function shufflePuzzle() {
+  // shuffles the puzzle so that each piece is moved to a different location in the grid
+  function shufflePuzzle() 
+  {
     pieces = shuffleArray(pieces);
     gameArea.clearRect(0, 0, puzzleWidth, puzzleHeight);
     var xPos = 0;
@@ -107,25 +116,27 @@ function initPuzzle() {
         yPos += pieceHeight;
       }
     }    
+    // reads the location of the mouse when its clicked and calls the puzzleclick function
     document.onpointerdown = onPuzzleClick;
   }
-  
-  function checkPieceClicked() {
+  // checks which peice is picked up by the mouse down action
+  function checkPieceClicked() 
+  {
     for (const piece of pieces) {
-      if (
-        mouse.x < piece.xPos ||
-        mouse.x > piece.xPos + pieceWidth ||
-        mouse.y < piece.yPos ||
-        mouse.y > piece.yPos + pieceHeight
-      ) {
-        } else {
+      if (mouse.x < piece.xPos || mouse.x > piece.xPos + pieceWidth|| 
+          mouse.y < piece.yPos || mouse.y > piece.yPos + pieceHeight) 
+        {
+        } 
+        else 
+        {
         return piece;
-      }
-    }
+        }
+        }
     return null;
   }
-  
-  function updatePuzzle(e) {
+  // updates puzzle based on piece dropped
+  function updatePuzzle(e) 
+  {
     currentDropPiece = null;
     if (e.layerX || e.layerX == 0) {
       mouse.x = e.layerX - canvas.offsetLeft;
@@ -195,7 +206,8 @@ function initPuzzle() {
     );
   }
   
-  function onPuzzleClick(e) {
+  function onPuzzleClick(e) 
+  {
     if (e.layerX || e.layerX === 0) {
       mouse.x = e.layerX - canvas.offsetLeft;
       mouse.y = e.layerY - canvas.offsetTop;
@@ -230,14 +242,16 @@ function initPuzzle() {
     }
   }
   
-  function gameOver() {
+  function gameOver() 
+  {
     document.onpointerdown = null;
     document.onpointermove = null;
     document.onpointerup = null;
-    initPuzzle();
+    loadPuzzleImage();
   }
   
-  function pieceDropped(e) {
+  function pieceDropped(e) 
+  {
     document.onpointermove = null;
     document.onpointerup = null;
     if (currentDropPiece !== null) {
@@ -252,8 +266,8 @@ function initPuzzle() {
     }
     resetPuzzleAndCheckWin();
   }
-  
-  function resetPuzzleAndCheckWin() {
+  function resetPuzzleAndCheckWin() 
+  {
     gameArea.clearRect(0, 0, puzzleWidth, puzzleHeight);
     var gameWin = true;
     for (piece of pieces) {
@@ -274,11 +288,12 @@ function initPuzzle() {
       }
     }
     if (gameWin) {
-      setTimeout(gameOver, 500);
+      //setTimeout(gameOver, 5000);
     }
   }
   
-  function shuffleArray(o) {
+  function shuffleArray(o) 
+  {
     for (
       var j, x, i = o.length;
       i;
@@ -286,8 +301,20 @@ function initPuzzle() {
     );
     return o;
   }
-  
-  function updateDifficulty(e) { 
+function showGameButtons() 
+{
+  var gameRunning = document.getElementById("gameRunning");
+      gameRunning.classList.remove("hidden");
+      gameRunning.style.display = "block";
+}
+function hideDifficulty()
+{
+  var selectDifficulty = document.getElementById("selectDifficulty");
+    selectDifficulty.classList.add("hidden");
+    selectDifficulty.style.display = "none";
+}
+    function startPuzzle(e) 
+    { 
     console.info(e.srcElement.value);
     e.stopPropagation()
     difficulty = e.srcElement.value;
@@ -297,26 +324,20 @@ function initPuzzle() {
     puzzleHeight = pieceHeight * difficulty;
     gameOver();
     shufflePuzzle();
-    var selectDifficulty = document.getElementById("selectDifficulty");
-        selectDifficulty.classList.add("hidden");
-        selectDifficulty.style.display = "none";
-    var gameRunning = document.getElementById("gameRunning");
-        gameRunning.classList.remove("hidden");
-        gameRunning.style.display = "block";
-  }
+    hideDifficulty();
+    showGameButtons();
+    }
   var buttons = document.getElementsByClassName("selectDifficulty");
-      buttons[0].addEventListener("click", updateDifficulty);
+      buttons[0].addEventListener("click", startPuzzle
+);
 
   var hint = document.getElementById("hint");
-     hint.addEventListener("mousedown", function(){
-       document.getElementById("hintWindow").innerHTML = "<img src='media/supercar_garage.jpg' width='100%' height='auto'>";
+      hint.addEventListener("mousedown", function(){
+        document.getElementById("hintWindow").innerHTML = "<img src='media/supercar_garage.jpg' width='100%' height='auto'>";
      }     
      );
-    // hint.addEventListener("mouseup", function(){
-    //   document.getElementById("hintWindow").innerHTML = "";
-    // });
-    document.getElementById("hintWindow").addEventListener("mouseout", function(){
-      document.getElementById("hintWindow").innerHTML = "";
+  document.getElementById("hintWindow").addEventListener("mouseout", function(){
+  document.getElementById("hintWindow").innerHTML = "";
     })
     document.getElementById("reset").addEventListener("click", function(){
       location.reload();

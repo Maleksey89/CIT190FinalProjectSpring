@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="css/finalProjectIndex.css">
+   <script src="https://code.jquery.com/jquery-latest.js"></script>
+   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <style>
+      #MoveMe1, #MoveMe2, #MoveMe3, #MoveMe4, #MoveMe5, #MoveMe6, #MoveMe7, #MoveMe8,#MoveMe9
+      {
+         border: solid;
+         width: 60px;
+         height: 60px;
+         text-align: center;
+         background-color: white;
+         font-size: 3em;
+         
+      }
+      .scramble{
+         margin-top:0;
+      }
+      .solved > p{
+         border: solid;
+         width: 60px;
+         height: 60px;
+         text-align: center;
+         background-color: white;
+      }
+      section{
+         max-width: 60%;
+		 display:flex;
+ 		 flex-wrap:wrap;
+        cursor: default;
+        width: 100%;
+        text-align: center;
+            
+		}
+      section:hover{
+         transform: none;
+      }
+	p{
+		flex:1;
+		width:200px;
+	}
+
+   </style>
+  
+   <title>Creating a Draggable Element</title>
+</head>
+<body>
+<span id="dropMenu" style="font-size:36px;cursor:pointer;color: white;">&#9776;Menu</span>
+      <nav id="mySideNav" class="sidenav">
+        <a href="readme.html">ReadMe</a>
+        <a href="finalProjectIndex.html">Game Page</a>
+        <a href="#">Page Settings</a>
+    </nav>
+
+   <h1>Word Scramble</h1>
+   <section>
+	   <div class="scramble">         
+          <p id="MoveMe1">W</p>
+          <p id="MoveMe2">O</p>
+          <p id="MoveMe3">R</p>
+          <p id="MoveMe4">D</p>
+          <p id="MoveMe5">G</p>
+          <p id="MoveMe6">A</p>
+          <p id="MoveMe7">M</p>
+          <p id="MoveMe8">E</p>
+          <p id="MoveMe9">S</p>
+      </div>
+      <div class="solved">         
+         <p></p>
+         <p></p>
+         <p></p>
+         <p></p>
+         <p></p>
+         <p></p>
+         <p></p>
+         <p></p>
+         <p></p>
+     </div>
+   </section>
+</body>
+<script>
+   document.getElementById("dropMenu").addEventListener("click", function(){
+     var x = document.getElementById("mySideNav");
+        if (x.style.display =="flex") {
+          x.style.display="none";
+       } else {
+          x.style.display="flex";
+ }
+});
+     $(function()
+       {
+        $("#MoveMe1").draggable();
+        $("#MoveMe2").draggable();
+        $("#MoveMe3").draggable();
+        $("#MoveMe4").draggable();
+        $("#MoveMe5").draggable();
+        $("#MoveMe6").draggable();
+        $("#MoveMe7").draggable();
+        $("#MoveMe8").draggable();
+        $("#MoveMe9").draggable();
+       });
+  </script>
+</html>

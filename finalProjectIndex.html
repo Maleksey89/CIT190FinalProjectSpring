@@ -9,8 +9,7 @@
 <body>   <!--I used the side menu as access to the readme and a future page that can change the css of the game page -->
       <span id="dropMenu" style="font-size:36px;cursor:pointer;color: white;">&#9776;Menu</span>
       <nav id="mySideNav" class="sidenav">
-        <a href="readme.html">ReadMe</a>
-        <a href="#">Page Settings</a>
+         <a href="readme.html">ReadMe</a>
     </nav>
     <!--This page is designed for folks who enjoy very simple video games and understand that i am a beginner. -->
 <header> <!--I chose a simple interface without too many colors, the color scheme reminds me of the car designs I used to make in Need For Speed most wanted, one of my favorite games
@@ -27,11 +26,11 @@
         </section>
         <section id="puzzleGame">
           <h2>Puzzle Game</h2>
-	          <p><a href="#"><p><img src="media/puzzle-pieces-jigsaw-piece-79431.png" alt="puzzle" height="100px" width="100px"></p><p>Recreate a puzzle using the pieces provided</p></a></p>
+	          <p><a href="puzzleGame.html"><p><img src="media/puzzle-pieces-jigsaw-piece-79431.png" alt="puzzle" height="100px" width="100px"></p><p>Recreate a puzzle using the pieces provided</p></a></p>
         </section>
         <section id="carGame">          
           <h2>Car Obstacle Game</h2>
-	          <p><a href="canvasGame.html"><p><img src="media/blackLambo.png" alt="Black Lambo" height="50px" width="150px"></p>Last as long as you can and not hit any obstacles<p></a>
+	          <p><a href="carGame.html"><p><img src="media/blackLambo.png" alt="Black Lambo" height="50px" width="150px"></p>Last as long as you can and not hit any obstacles<p></a>
         </section>
       </div>
      </article>
@@ -48,10 +47,10 @@
 			location.assign("Words.html");
 		});
     document.getElementById("puzzleGame").addEventListener("click", function(){
-			location.assign("#");
+			location.assign("puzzleGame.html");
 		});
     document.getElementById("carGame").addEventListener("click", function(){
-			location.assign("canvasGame.html");
+			location.assign("carGame.html");
 		});
   </script>
 </body>
